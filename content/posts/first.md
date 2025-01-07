@@ -1,7 +1,7 @@
 ---
 title: 第一个帖子
-date: 2025-01-07T14:14:35+08:00
-lastmod: 2025-01-07T14:14:35+08:00
+date: 2025-01-07
+lastmod: 2025-01-07
 author: Hongyan
 # avatar: /img/author.jpg
 # authorlink: https://author.site
