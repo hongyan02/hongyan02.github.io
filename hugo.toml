@@ -1,4 +1,4 @@
-baseurl = "hongyan02.github.io"
+baseurl = "https://hongyan02.github.io"
 defaultContentLanguage = "zh"
 languageCode = "zh"
 title = "HongyanのBlog"
