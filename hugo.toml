@@ -7,8 +7,8 @@ theme = "dream"
 # [services]
 # [services.disqus]
 # shortname = ""
-# [services.googleAnalytics]
-# ID = ""
+ [services.googleAnalytics]
+ ID = "G-JJ2QMM7E9S"
 
 [params]
 # zenMode = true
