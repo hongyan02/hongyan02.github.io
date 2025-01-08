@@ -1,4 +1,4 @@
-baseurl = "https://hongyan02.github.io"
+baseurl = "https://hongyan-blog.vercel.app/"
 defaultContentLanguage = "zh"
 languageCode = "zh"
 title = "HongyanのBlog"
