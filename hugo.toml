@@ -45,17 +45,17 @@ siteStartYear = 2025
 # favicon = "favicon.ico"
 
 # Syntax highlighting
- customSyntaxHighlighting = true
+# customSyntaxHighlighting = true
 
 # options
- stickyNav = true
+# stickyNav = true
  reorderNavItems = ["search", "rss", "posts", "categories", "tags"]
- collapseNavItems = ["posts", "categories", "tags"]
+# collapseNavItems = ["posts", "categories", "tags"]
 # noDefaultSummaryCover = true
- showTableOfContents = true
- showSummaryCoverInPost = true
- imageZoomableInPost = true
- showPrevNextPost = true
+ #showTableOfContents = true
+# showSummaryCoverInPost = true
+# imageZoomableInPost = true
+# showPrevNextPost = true
 # reorderShares = ["x", "facebook", "whatsapp"]
 
 # [params.navItems]

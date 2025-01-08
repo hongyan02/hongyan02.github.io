@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on HongyanのBlog</title>
-    <link>https://hongyan-blog.vercel.app/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on HongyanのBlog</description>
     <generator>Hugo</generator>
-    <language>zh</language>
-    <lastBuildDate>Wed, 08 Jan 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://hongyan-blog.vercel.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-Hans</language>
+    <lastBuildDate>Tue, 07 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tag2</title>
-      <link>https://hongyan-blog.vercel.app/tags/tag2/</link>
-      <pubDate>Wed, 08 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://hongyan-blog.vercel.app/tags/tag2/</guid>
+      <link>http://localhost:1313/tags/tag2/</link>
+      <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/tag2/</guid>
       <description></description>
     </item>
     <item>
       <title>记录</title>
-      <link>https://hongyan-blog.vercel.app/tags/%E8%AE%B0%E5%BD%95/</link>
-      <pubDate>Wed, 08 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://hongyan-blog.vercel.app/tags/%E8%AE%B0%E5%BD%95/</guid>
+      <link>http://localhost:1313/tags/%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E8%AE%B0%E5%BD%95/</guid>
       <description></description>
     </item>
   </channel>
