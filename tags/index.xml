@@ -6,12 +6,19 @@
     <description>Recent content in Tags on HongyanのBlog</description>
     <generator>Hugo</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Tue, 07 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jan 2025 13:17:11 +0800</lastBuildDate>
     <atom:link href="https://hongyan02.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tag1</title>
+      <link>https://hongyan02.github.io/tags/tag1/</link>
+      <pubDate>Sat, 18 Jan 2025 13:17:11 +0800</pubDate>
+      <guid>https://hongyan02.github.io/tags/tag1/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Tag2</title>
       <link>https://hongyan02.github.io/tags/tag2/</link>
-      <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 18 Jan 2025 13:17:11 +0800</pubDate>
       <guid>https://hongyan02.github.io/tags/tag2/</guid>
       <description></description>
     </item>
