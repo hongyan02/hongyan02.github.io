@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on What&#39;s Going On!?</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on What&#39;s Going On!?</description>
+    <generator>Hugo -- 0.144.2</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 25 Feb 2025 19:27:24 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用AI快速学习一门编程语言</title>
+      <link>http://localhost:1313/posts/%E7%94%A8ai%E5%BF%AB%E9%80%9F%E5%AD%A6%E4%B9%A0%E4%B8%80%E9%97%A8%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</link>
+      <pubDate>Tue, 25 Feb 2025 19:27:24 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E7%94%A8ai%E5%BF%AB%E9%80%9F%E5%AD%A6%E4%B9%A0%E4%B8%80%E9%97%A8%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</guid>
+      <description>&lt;p&gt;​	在这段时间当中我一直苦恼于编程语言的学习方法，我的学习进展十分缓慢，官方的文档一般都晦涩难懂，视频又太过消耗时间，一堆冗余的内容非常不适合已经有编程基础的人学习一门新语言特性。&lt;/p&gt;
+&lt;p&gt;​	今天偶然在&lt;a href=&#34;https://linux.do/&#34;&gt;LINUXDO&lt;/a&gt;的共享文档中看到这篇内容“&lt;a href=&#34;https://linux.do/t/topic/405818&#34;&gt;【提示词工程】分享那些我认为好用的， 我在用的， 我愿意推荐的提示词&lt;/a&gt;”,题主很好的给出了用于AI优质回答的Prompt,基于下面这个Prompt,我能够快速掌握一门编程语言的基础部分和与其他语言不一样的地方。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-Prompt&#34; data-lang=&#34;Prompt&#34;&gt;请你把我看作一个完全零基础的新手， 我希望通过不断思考并回答你提出的问题来学习知识。我们的对话流程是这样的：
+1. 我向你提出我想了解的问题
+2. 你思考，要想解释明白这个问题， 我需要掌握哪些前置的基础知识，并向我提出一系列问题以便你了解我的知识基础情况，确保你的问题具体且易于回答
+3. 根据我的回答正确情况， 你来选择合适的讲解程度， 确保我可以听明白你的解释
+   a. 你需要向我解释明白那些我不会却必要的基础知识
+   b. 回答我的问题。
+   c. 最后，你还需要提出一系列问题来检验我是否听明白了，确保问题具体。
+   d. 如果你认为我已经完全搞明白我最初提出的问题了，结束对话即可，如果没有，重复3
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;​	同时我也将分享出我与ChatGPT的一段关于JS的&lt;a href=&#34;https://chatgpt.com/share/67bd5d24-3c18-800b-a951-23cd0637a97b&#34;&gt;练习&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;​	它不仅能够让你快速掌握一门语言基础，还能通过问答的方式告诉你一些在官方文档所不会描述的东西，让你能够更快的在实践中应用，减少不必要的Bug。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>初来乍到</title>
+      <link>http://localhost:1313/posts/%E5%88%9D%E6%9D%A5%E4%B9%8D%E5%88%B0/</link>
+      <pubDate>Tue, 25 Feb 2025 19:27:21 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E5%88%9D%E6%9D%A5%E4%B9%8D%E5%88%B0/</guid>
+      <description>&lt;p&gt;​	很高兴，今天开始也算是拥有自己的Blog了~&lt;/p&gt;
+&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
+&lt;p&gt;​	其实一开始并没有打算建立这个网站，是从上周开始一直听同事说要制作自己的博客，到昨天开始看他捣鼓这些，并且展示了许多他人的博客页面给我看，感觉是个非常不错的属于自己的一片小天地，于是决定自己也弄个博客。也算是2025年一个新的开始，新的变化了。&lt;/p&gt;
+&lt;h2 id=&#34;内容发布&#34;&gt;内容发布&lt;/h2&gt;
+&lt;p&gt;​	目前我也还没想好，这里面会放些什么东西，初步的打算如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;个人经历/学习/项目 （&lt;strong&gt;main&lt;/strong&gt;）&lt;/li&gt;
+&lt;li&gt;游戏分享&lt;/li&gt;
+&lt;li&gt;影视分享&lt;/li&gt;
+&lt;li&gt;Anything interesting&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>
