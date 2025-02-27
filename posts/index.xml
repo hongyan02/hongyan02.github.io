@@ -5,8 +5,10 @@
     <link>https://agcl.ink/posts/</link>
     <description>Recent content in Posts on What&#39;s Going On!?</description>
     <generator>Hugo -- 0.144.2</generator>
-    <feedId>117756326107963392</feedId>
-    <userId>115209803360736256</userId>
+    <follow_challenge>
+      <feedId>117756326107963392</feedId>
+      <userId>115209803360736256</userId>
+    </follow_challenge>
     <language>zh</language>
     <lastBuildDate>Tue, 25 Feb 2025 19:27:24 +0800</lastBuildDate>
     <atom:link href="https://agcl.ink/posts/index.xml" rel="self" type="application/rss+xml" />
