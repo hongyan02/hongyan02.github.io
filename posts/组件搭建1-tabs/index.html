@@ -1,0 +1,292 @@
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>组件搭建1 Tabs | What's Going On!?</title>
+<meta name=keywords content><meta name=description content='Tabs帮助我们在有限的页面上切换显示不同的内容面板，通过标签页的形式提升内容的组织性和用户体验。
+在这里我们以Antd的Tabs组件为例，拆解Tabs组件包含哪些内容。
+https://ant.design/components/tabs-cn#tabs-demo-custom-indicator
+主要分为上中下三层
+
+第一层：标签
+第二层：指示条
+第三层：标签内容容器
+
+通过点击标签，指示条和内容容器也会出现相应的变化。
+首先我们的Tabs组件接收一个items数组作为传入参数渲染。
+//key作为唯一标识符
+//label是标签显示的文字内容
+//children是内容容器的内容
+const items = [
+  {
+    key:"1",
+    label:"label1",
+    children:"children1",
+  },
+	{
+    key:"2",
+    label:"label2",
+    children:"children2",
+  }
+]
+现在将它传入组件当中。
+export default Tabs = ({items}) => {
+  
+}
+接下来，我们要在这个组件中，实现Tabs的基础功能。
+标签实现
+标签需要根据items传入的对象个数来进行渲染。这里我们可以用map进行遍历。
+items.map((item) => {
+  return (
+		<div
+				key = {item.key} //唯一值
+        onClick = {}
+		>
+          {item.label} //标签内容
+   </div>
+)
+})
+现在实现了多个标签的显示，但我们还需要实现它的点击效果。
+当我们点击其中一个标签的时候，显示这个标签的内容。
+//首先我们需要一个参数来记录当前的标签值，并赋予默认值。
+const [activeIndex,setActiveIndex] = useState(0);
+
+//现在实现onClick方法
+onClick = {() => setActiveIndex(item.key-1)}
+//因为在map中的下标从0开始，但是我们一般定义的key值是从1开始，所以这里要-1才能正确渲染对于的内容。
+//也可以让items中的key值从0开始
+那么现在整合上面的内容，我们就实现了一个完整的多标签显示。
+export default Tabs = ({items}) => {
+  const [activeIndex,setActiveIndex] = useState(0);
+  return 
+		items.map((item) => {
+  		return (
+				<div
+						key = {item.key} //唯一值
+        		onClick = {() => setActiveIndex(item.key-1)}
+						>
+         		 {item.label} //标签内容
+  		 </div>
+		 );
+		 })
+
+};
+指示条实现
+指示条我们可以看作是一个高度极小，但保持一定宽度的div通过平滑的CSS过渡效果实现的。'><meta name=author content><link rel=canonical href=https://agcl.ink/posts/%E7%BB%84%E4%BB%B6%E6%90%AD%E5%BB%BA1-tabs/><link crossorigin=anonymous href=/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as=style><link rel=icon href=https://agcl.ink/assets/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://agcl.ink/assets/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://agcl.ink/assets/favicon-32x32.png><link rel=apple-touch-icon href=https://agcl.ink/assets/apple-touch-icon.png><link rel=mask-icon href=https://agcl.ink/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://agcl.ink/posts/%E7%BB%84%E4%BB%B6%E6%90%AD%E5%BB%BA1-tabs/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:url" content="https://agcl.ink/posts/%E7%BB%84%E4%BB%B6%E6%90%AD%E5%BB%BA1-tabs/"><meta property="og:site_name" content="What's Going On!?"><meta property="og:title" content="组件搭建1 Tabs"><meta property="og:description" content='Tabs帮助我们在有限的页面上切换显示不同的内容面板，通过标签页的形式提升内容的组织性和用户体验。
+在这里我们以Antd的Tabs组件为例，拆解Tabs组件包含哪些内容。
+https://ant.design/components/tabs-cn#tabs-demo-custom-indicator
+主要分为上中下三层
+第一层：标签 第二层：指示条 第三层：标签内容容器 通过点击标签，指示条和内容容器也会出现相应的变化。
+首先我们的Tabs组件接收一个items数组作为传入参数渲染。
+//key作为唯一标识符 //label是标签显示的文字内容 //children是内容容器的内容 const items = [ { key:"1", label:"label1", children:"children1", }, { key:"2", label:"label2", children:"children2", } ] 现在将它传入组件当中。
+export default Tabs = ({items}) => { } 接下来，我们要在这个组件中，实现Tabs的基础功能。
+标签实现 标签需要根据items传入的对象个数来进行渲染。这里我们可以用map进行遍历。
+items.map((item) => { return ( <div key = {item.key} //唯一值 onClick = {} > {item.label} //标签内容 </div> ) }) 现在实现了多个标签的显示，但我们还需要实现它的点击效果。 当我们点击其中一个标签的时候，显示这个标签的内容。
+//首先我们需要一个参数来记录当前的标签值，并赋予默认值。 const [activeIndex,setActiveIndex] = useState(0); //现在实现onClick方法 onClick = {() => setActiveIndex(item.key-1)} //因为在map中的下标从0开始，但是我们一般定义的key值是从1开始，所以这里要-1才能正确渲染对于的内容。 //也可以让items中的key值从0开始 那么现在整合上面的内容，我们就实现了一个完整的多标签显示。
+export default Tabs = ({items}) => { const [activeIndex,setActiveIndex] = useState(0); return items.map((item) => { return ( <div key = {item.key} //唯一值 onClick = {() => setActiveIndex(item.key-1)} > {item.label} //标签内容 </div> ); }) }; 指示条实现 指示条我们可以看作是一个高度极小，但保持一定宽度的div通过平滑的CSS过渡效果实现的。'><meta property="og:locale" content="zh"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-06-23T09:07:39+08:00"><meta property="article:modified_time" content="2025-06-23T09:07:39+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="组件搭建1 Tabs"><meta name=twitter:description content='Tabs帮助我们在有限的页面上切换显示不同的内容面板，通过标签页的形式提升内容的组织性和用户体验。
+在这里我们以Antd的Tabs组件为例，拆解Tabs组件包含哪些内容。
+https://ant.design/components/tabs-cn#tabs-demo-custom-indicator
+主要分为上中下三层
+
+第一层：标签
+第二层：指示条
+第三层：标签内容容器
+
+通过点击标签，指示条和内容容器也会出现相应的变化。
+首先我们的Tabs组件接收一个items数组作为传入参数渲染。
+//key作为唯一标识符
+//label是标签显示的文字内容
+//children是内容容器的内容
+const items = [
+  {
+    key:"1",
+    label:"label1",
+    children:"children1",
+  },
+	{
+    key:"2",
+    label:"label2",
+    children:"children2",
+  }
+]
+现在将它传入组件当中。
+export default Tabs = ({items}) => {
+  
+}
+接下来，我们要在这个组件中，实现Tabs的基础功能。
+标签实现
+标签需要根据items传入的对象个数来进行渲染。这里我们可以用map进行遍历。
+items.map((item) => {
+  return (
+		<div
+				key = {item.key} //唯一值
+        onClick = {}
+		>
+          {item.label} //标签内容
+   </div>
+)
+})
+现在实现了多个标签的显示，但我们还需要实现它的点击效果。
+当我们点击其中一个标签的时候，显示这个标签的内容。
+//首先我们需要一个参数来记录当前的标签值，并赋予默认值。
+const [activeIndex,setActiveIndex] = useState(0);
+
+//现在实现onClick方法
+onClick = {() => setActiveIndex(item.key-1)}
+//因为在map中的下标从0开始，但是我们一般定义的key值是从1开始，所以这里要-1才能正确渲染对于的内容。
+//也可以让items中的key值从0开始
+那么现在整合上面的内容，我们就实现了一个完整的多标签显示。
+export default Tabs = ({items}) => {
+  const [activeIndex,setActiveIndex] = useState(0);
+  return 
+		items.map((item) => {
+  		return (
+				<div
+						key = {item.key} //唯一值
+        		onClick = {() => setActiveIndex(item.key-1)}
+						>
+         		 {item.label} //标签内容
+  		 </div>
+		 );
+		 })
+
+};
+指示条实现
+指示条我们可以看作是一个高度极小，但保持一定宽度的div通过平滑的CSS过渡效果实现的。'><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://agcl.ink/posts/"},{"@type":"ListItem","position":2,"name":"组件搭建1 Tabs","item":"https://agcl.ink/posts/%E7%BB%84%E4%BB%B6%E6%90%AD%E5%BB%BA1-tabs/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"组件搭建1 Tabs","name":"组件搭建1 Tabs","description":"Tabs帮助我们在有限的页面上切换显示不同的内容面板，通过标签页的形式提升内容的组织性和用户体验。\n在这里我们以Antd的Tabs组件为例，拆解Tabs组件包含哪些内容。\nhttps://ant.design/components/tabs-cn#tabs-demo-custom-indicator\n主要分为上中下三层\n第一层：标签 第二层：指示条 第三层：标签内容容器 通过点击标签，指示条和内容容器也会出现相应的变化。\n首先我们的Tabs组件接收一个items数组作为传入参数渲染。\n//key作为唯一标识符 //label是标签显示的文字内容 //children是内容容器的内容 const items = [ { key:\u0026#34;1\u0026#34;, label:\u0026#34;label1\u0026#34;, children:\u0026#34;children1\u0026#34;, }, { key:\u0026#34;2\u0026#34;, label:\u0026#34;label2\u0026#34;, children:\u0026#34;children2\u0026#34;, } ] 现在将它传入组件当中。\nexport default Tabs = ({items}) =\u0026gt; { } 接下来，我们要在这个组件中，实现Tabs的基础功能。\n标签实现 标签需要根据items传入的对象个数来进行渲染。这里我们可以用map进行遍历。\nitems.map((item) =\u0026gt; { return ( \u0026lt;div key = {item.key} //唯一值 onClick = {} \u0026gt; {item.label} //标签内容 \u0026lt;/div\u0026gt; ) }) 现在实现了多个标签的显示，但我们还需要实现它的点击效果。 当我们点击其中一个标签的时候，显示这个标签的内容。\n//首先我们需要一个参数来记录当前的标签值，并赋予默认值。 const [activeIndex,setActiveIndex] = useState(0); //现在实现onClick方法 onClick = {() =\u0026gt; setActiveIndex(item.key-1)} //因为在map中的下标从0开始，但是我们一般定义的key值是从1开始，所以这里要-1才能正确渲染对于的内容。 //也可以让items中的key值从0开始 那么现在整合上面的内容，我们就实现了一个完整的多标签显示。\nexport default Tabs = ({items}) =\u0026gt; { const [activeIndex,setActiveIndex] = useState(0); return items.map((item) =\u0026gt; { return ( \u0026lt;div key = {item.key} //唯一值 onClick = {() =\u0026gt; setActiveIndex(item.key-1)} \u0026gt; {item.label} //标签内容 \u0026lt;/div\u0026gt; ); }) }; 指示条实现 指示条我们可以看作是一个高度极小，但保持一定宽度的div通过平滑的CSS过渡效果实现的。\n","keywords":[],"articleBody":"Tabs帮助我们在有限的页面上切换显示不同的内容面板，通过标签页的形式提升内容的组织性和用户体验。\n在这里我们以Antd的Tabs组件为例，拆解Tabs组件包含哪些内容。\nhttps://ant.design/components/tabs-cn#tabs-demo-custom-indicator\n主要分为上中下三层\n第一层：标签 第二层：指示条 第三层：标签内容容器 通过点击标签，指示条和内容容器也会出现相应的变化。\n首先我们的Tabs组件接收一个items数组作为传入参数渲染。\n//key作为唯一标识符 //label是标签显示的文字内容 //children是内容容器的内容 const items = [ { key:\"1\", label:\"label1\", children:\"children1\", }, { key:\"2\", label:\"label2\", children:\"children2\", } ] 现在将它传入组件当中。\nexport default Tabs = ({items}) =\u003e { } 接下来，我们要在这个组件中，实现Tabs的基础功能。\n标签实现 标签需要根据items传入的对象个数来进行渲染。这里我们可以用map进行遍历。\nitems.map((item) =\u003e { return ( \u003cdiv key = {item.key} //唯一值 onClick = {} \u003e {item.label} //标签内容 \u003c/div\u003e ) }) 现在实现了多个标签的显示，但我们还需要实现它的点击效果。 当我们点击其中一个标签的时候，显示这个标签的内容。\n//首先我们需要一个参数来记录当前的标签值，并赋予默认值。 const [activeIndex,setActiveIndex] = useState(0); //现在实现onClick方法 onClick = {() =\u003e setActiveIndex(item.key-1)} //因为在map中的下标从0开始，但是我们一般定义的key值是从1开始，所以这里要-1才能正确渲染对于的内容。 //也可以让items中的key值从0开始 那么现在整合上面的内容，我们就实现了一个完整的多标签显示。\nexport default Tabs = ({items}) =\u003e { const [activeIndex,setActiveIndex] = useState(0); return items.map((item) =\u003e { return ( \u003cdiv key = {item.key} //唯一值 onClick = {() =\u003e setActiveIndex(item.key-1)} \u003e {item.label} //标签内容 \u003c/div\u003e ); }) }; 指示条实现 指示条我们可以看作是一个高度极小，但保持一定宽度的div通过平滑的CSS过渡效果实现的。\n我们需要计算标签div的位置，才能在它的下方定位指示条的位置。可以用Ref来绑定标签div。\n再用它来访问 children、offsetWidth、offsetLeft 等原生 DOM 属性来定位指示条位置。\nconst tabsRef = useRef(null) //定义指示条样式 const [indicatorStyle,setIndicatorStyle] = useState({}) useEffect = (() =\u003e{ //如果tabs的标签div不存在则直接返回 if(!tabsRef.current){ return; } //获取当前激活的Tabs位置key const currentTab = tabsRef.current.children[activeIndex]; if (currentTab) { //设置指示条的宽度与开始位置 setIndicatorStyle({ width: currentTab.offsetWidth - 20, left: currentTab.offsetLeft + 10, }); } },[activeIndex]);//根据activeIndex变化触发Effect return //设置绝对定位，标签div设置为相对定位 \u003cdiv style={ absolute, ...indicatorStyle } /\u003e 标签和指示条都已经实现了。还剩下Childrend的内容显示。\n标签内容容器实现 \u003cdiv className=\"p-4\"\u003e{items[activeIndex].children}\u003c/div\u003e 加上样式后的完整代码 import React, { useState, useRef, useEffect } from \"react\"; /** * Tabs组件 * @param {any} {items} * @returns {any} */ const Tabs = ({ items }) =\u003e { const [activeIndex, setActiveIndex] = useState(0); const [indicatorStyle, setIndicatorStyle] = useState({}); const tabsRef = useRef(null); useEffect(() =\u003e { if (!tabsRef.current) { return; } const currentTab = tabsRef.current.children[activeIndex]; if (currentTab) { setIndicatorStyle({ width: currentTab.offsetWidth - 20, left: currentTab.offsetLeft + 10, }); } }, [activeIndex]); return ( \u003cdiv className=\"p-4\"\u003e \u003cdiv className=\"flex h-10 w-full relative\" ref={tabsRef}\u003e {items.map((item) =\u003e { return ( \u003cdiv key={item.key} onClick={() =\u003e setActiveIndex(item.key - 1)} style={{ height: \"40px\", width: \"80px\", display: \"flex\", justifyContent: \"center\", alignItems: \"center\", margin: \"0 10px\", cursor: \"pointer\", color: activeIndex === item.key - 1 ? \"#3875f6\" : \"black\", }} \u003e {item.label} \u003c/div\u003e ); })} \u003cdiv className=\"absolute bottom-0 left-0 h-1 bg-blue-500 transition-all duration-300\" style={indicatorStyle} /\u003e \u003c/div\u003e \u003cdiv className=\"p-4\"\u003e{items[activeIndex].children}\u003c/div\u003e \u003c/div\u003e ); }; export default Tabs; ","wordCount":"310","inLanguage":"en","datePublished":"2025-06-23T09:07:39+08:00","dateModified":"2025-06-23T09:07:39+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://agcl.ink/posts/%E7%BB%84%E4%BB%B6%E6%90%AD%E5%BB%BA1-tabs/"},"publisher":{"@type":"Organization","name":"What's Going On!?","logo":{"@type":"ImageObject","url":"https://agcl.ink/assets/favicon.ico"}}}</script></head><body id=top><script>window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://agcl.ink/ accesskey=h title="What's Going On!? (Alt + H)">What's Going On!?</a><div class=logo-switches></div></div><ul id=menu><li><a href=https://agcl.ink/ title=Home><span>Home</span></a></li><li><a href=https://agcl.ink/posts/ title=Blog><span>Blog</span></a></li><li><a href=https://agcl.ink/gallery/ title=Photos><span>Photos</span></a></li><li><a href=https://agcl.ink/games/ title=Games><span>Games</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">组件搭建1 Tabs</h1><div class=post-meta><span title='2025-06-23 09:07:39 +0800 CST'>June 23, 2025</span>&nbsp;·&nbsp;2 min</div></header><div class=post-content><p>Tabs帮助我们在有限的页面上切换显示不同的内容面板，通过标签页的形式提升内容的组织性和用户体验。</p><p>在这里我们以Antd的<code>Tabs</code>组件为例，拆解<code>Tabs</code>组件包含哪些内容。</p><p><a href=https://ant.design/components/tabs-cn#tabs-demo-custom-indicator>https://ant.design/components/tabs-cn#tabs-demo-custom-indicator</a></p><p>主要分为上中下三层</p><ul><li>第一层：标签</li><li>第二层：指示条</li><li>第三层：标签内容容器</li></ul><p>通过点击标签，指示条和内容容器也会出现相应的变化。</p><p>首先我们的<code>Tabs</code>组件接收一个<code>items</code>数组作为传入参数渲染。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#75715e>//key作为唯一标识符
+</span></span></span><span style=display:flex><span><span style=color:#75715e>//label是标签显示的文字内容
+</span></span></span><span style=display:flex><span><span style=color:#75715e>//children是内容容器的内容
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>items</span> <span style=color:#f92672>=</span> [
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>key</span><span style=color:#f92672>:</span><span style=color:#e6db74>&#34;1&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>label</span><span style=color:#f92672>:</span><span style=color:#e6db74>&#34;label1&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>children</span><span style=color:#f92672>:</span><span style=color:#e6db74>&#34;children1&#34;</span>,
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>key</span><span style=color:#f92672>:</span><span style=color:#e6db74>&#34;2&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>label</span><span style=color:#f92672>:</span><span style=color:#e6db74>&#34;label2&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>children</span><span style=color:#f92672>:</span><span style=color:#e6db74>&#34;children2&#34;</span>,
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>]
+</span></span></code></pre></div><p>现在将它传入组件当中。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>Tabs</span> <span style=color:#f92672>=</span> ({<span style=color:#a6e22e>items</span>}) =&gt; {
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>接下来，我们要在这个组件中，实现Tabs的基础功能。</p><h3 id=标签实现>标签实现<a hidden class=anchor aria-hidden=true href=#标签实现>#</a></h3><p>标签需要根据<code>items</code>传入的对象个数来进行渲染。这里我们可以用map进行遍历。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>items</span>.<span style=color:#a6e22e>map</span>((<span style=color:#a6e22e>item</span>) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>		<span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span>
+</span></span><span style=display:flex><span>				<span style=color:#a6e22e>key</span> <span style=color:#f92672>=</span> {<span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>key</span>} <span style=color:#75715e>//唯一值
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#a6e22e>onClick</span> <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>		<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>          {<span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>label</span>} <span style=color:#75715e>//标签内容
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>   <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+</span></span><span style=display:flex><span>)
+</span></span><span style=display:flex><span>})
+</span></span></code></pre></div><p>现在实现了多个标签的显示，但我们还需要实现它的点击效果。
+当我们点击其中一个标签的时候，显示这个标签的内容。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#75715e>//首先我们需要一个参数来记录当前的标签值，并赋予默认值。
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>activeIndex</span>,<span style=color:#a6e22e>setActiveIndex</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>//现在实现onClick方法
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>onClick</span> <span style=color:#f92672>=</span> {() =&gt; <span style=color:#a6e22e>setActiveIndex</span>(<span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>key</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)}
+</span></span><span style=display:flex><span><span style=color:#75715e>//因为在map中的下标从0开始，但是我们一般定义的key值是从1开始，所以这里要-1才能正确渲染对于的内容。
+</span></span></span><span style=display:flex><span><span style=color:#75715e>//也可以让items中的key值从0开始
+</span></span></span></code></pre></div><p>那么现在整合上面的内容，我们就实现了一个完整的多标签显示。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>Tabs</span> <span style=color:#f92672>=</span> ({<span style=color:#a6e22e>items</span>}) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>activeIndex</span>,<span style=color:#a6e22e>setActiveIndex</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> 
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>items</span>.<span style=color:#a6e22e>map</span>((<span style=color:#a6e22e>item</span>) =&gt; {
+</span></span><span style=display:flex><span>  		<span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>				<span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span>
+</span></span><span style=display:flex><span>						<span style=color:#a6e22e>key</span> <span style=color:#f92672>=</span> {<span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>key</span>} <span style=color:#75715e>//唯一值
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        		<span style=color:#a6e22e>onClick</span> <span style=color:#f92672>=</span> {() =&gt; <span style=color:#a6e22e>setActiveIndex</span>(<span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>key</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)}
+</span></span><span style=display:flex><span>						<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>         		 {<span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>label</span>} <span style=color:#75715e>//标签内容
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  		 <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+</span></span><span style=display:flex><span>		 );
+</span></span><span style=display:flex><span>		 })
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><h3 id=指示条实现>指示条实现<a hidden class=anchor aria-hidden=true href=#指示条实现>#</a></h3><p>指示条我们可以看作是一个高度极小，但保持一定宽度的div通过平滑的CSS过渡效果实现的。</p><p>我们需要计算标签div的位置，才能在它的下方定位指示条的位置。可以用<code>Ref</code>来绑定标签div。</p><p>再用它来访问 <code>children</code>、<code>offsetWidth</code>、<code>offsetLeft</code> 等原生 DOM 属性来定位指示条位置。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>tabsRef</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useRef</span>(<span style=color:#66d9ef>null</span>)
+</span></span><span style=display:flex><span><span style=color:#75715e>//定义指示条样式
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>indicatorStyle</span>,<span style=color:#a6e22e>setIndicatorStyle</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>({})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>useEffect</span> <span style=color:#f92672>=</span> (() =&gt;{
+</span></span><span style=display:flex><span>  <span style=color:#75715e>//如果tabs的标签div不存在则直接返回
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span><span style=color:#a6e22e>tabsRef</span>.<span style=color:#a6e22e>current</span>){
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#75715e>//获取当前激活的Tabs位置key
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>currentTab</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>tabsRef</span>.<span style=color:#a6e22e>current</span>.<span style=color:#a6e22e>children</span>[<span style=color:#a6e22e>activeIndex</span>];
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>currentTab</span>) {
+</span></span><span style=display:flex><span>    				<span style=color:#75715e>//设置指示条的宽度与开始位置
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            <span style=color:#a6e22e>setIndicatorStyle</span>({
+</span></span><span style=display:flex><span>                <span style=color:#a6e22e>width</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>currentTab</span>.<span style=color:#a6e22e>offsetWidth</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>20</span>,
+</span></span><span style=display:flex><span>                <span style=color:#a6e22e>left</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>currentTab</span>.<span style=color:#a6e22e>offsetLeft</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>10</span>,
+</span></span><span style=display:flex><span>            });
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>},[<span style=color:#a6e22e>activeIndex</span>]);<span style=color:#75715e>//根据activeIndex变化触发Effect
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>return</span> 
+</span></span><span style=display:flex><span><span style=color:#75715e>//设置绝对定位，标签div设置为相对定位
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span>
+</span></span><span style=display:flex><span>  	<span style=color:#a6e22e>style</span><span style=color:#f92672>=</span>{
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>absolute</span>,
+</span></span><span style=display:flex><span>      ...<span style=color:#a6e22e>indicatorStyle</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  <span style=color:#f92672>/&gt;</span>
+</span></span></code></pre></div><p>标签和指示条都已经实现了。还剩下Childrend的内容显示。</p><h3 id=标签内容容器实现>标签内容容器实现<a hidden class=anchor aria-hidden=true href=#标签内容容器实现>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span> <span style=color:#a6e22e>className</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;p-4&#34;</span><span style=color:#f92672>&gt;</span>{<span style=color:#a6e22e>items</span>[<span style=color:#a6e22e>activeIndex</span>].<span style=color:#a6e22e>children</span>}<span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+</span></span></code></pre></div><h3 id=加上样式后的完整代码>加上样式后的完整代码<a hidden class=anchor aria-hidden=true href=#加上样式后的完整代码>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>React</span>, { <span style=color:#a6e22e>useState</span>, <span style=color:#a6e22e>useRef</span>, <span style=color:#a6e22e>useEffect</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;react&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * Tabs组件
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * @param {any} {items}
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * @returns {any}
+</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Tabs</span> <span style=color:#f92672>=</span> ({ <span style=color:#a6e22e>items</span> }) =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>activeIndex</span>, <span style=color:#a6e22e>setActiveIndex</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>indicatorStyle</span>, <span style=color:#a6e22e>setIndicatorStyle</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>({});
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>tabsRef</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useRef</span>(<span style=color:#66d9ef>null</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>tabsRef</span>.<span style=color:#a6e22e>current</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>currentTab</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>tabsRef</span>.<span style=color:#a6e22e>current</span>.<span style=color:#a6e22e>children</span>[<span style=color:#a6e22e>activeIndex</span>];
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>currentTab</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>setIndicatorStyle</span>({
+</span></span><span style=display:flex><span>                <span style=color:#a6e22e>width</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>currentTab</span>.<span style=color:#a6e22e>offsetWidth</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>20</span>,
+</span></span><span style=display:flex><span>                <span style=color:#a6e22e>left</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>currentTab</span>.<span style=color:#a6e22e>offsetLeft</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>10</span>,
+</span></span><span style=display:flex><span>            });
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }, [<span style=color:#a6e22e>activeIndex</span>]);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span> <span style=color:#a6e22e>className</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;p-4&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span> <span style=color:#a6e22e>className</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;flex h-10 w-full relative&#34;</span> <span style=color:#a6e22e>ref</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>tabsRef</span>}<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>                {<span style=color:#a6e22e>items</span>.<span style=color:#a6e22e>map</span>((<span style=color:#a6e22e>item</span>) =&gt; {
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span>
+</span></span><span style=display:flex><span>                            <span style=color:#a6e22e>key</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>key</span>}
+</span></span><span style=display:flex><span>                            <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setActiveIndex</span>(<span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>key</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>)}
+</span></span><span style=display:flex><span>                            <span style=color:#a6e22e>style</span><span style=color:#f92672>=</span>{{
+</span></span><span style=display:flex><span>                                <span style=color:#a6e22e>height</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;40px&#34;</span>,
+</span></span><span style=display:flex><span>                                <span style=color:#a6e22e>width</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;80px&#34;</span>,
+</span></span><span style=display:flex><span>                                <span style=color:#a6e22e>display</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;flex&#34;</span>,
+</span></span><span style=display:flex><span>                                <span style=color:#a6e22e>justifyContent</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;center&#34;</span>,
+</span></span><span style=display:flex><span>                                <span style=color:#a6e22e>alignItems</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;center&#34;</span>,
+</span></span><span style=display:flex><span>                                <span style=color:#a6e22e>margin</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;0 10px&#34;</span>,
+</span></span><span style=display:flex><span>                                <span style=color:#a6e22e>cursor</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;pointer&#34;</span>,
+</span></span><span style=display:flex><span>                                <span style=color:#a6e22e>color</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>activeIndex</span> <span style=color:#f92672>===</span> <span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>key</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>?</span> <span style=color:#e6db74>&#34;#3875f6&#34;</span> <span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;black&#34;</span>,
+</span></span><span style=display:flex><span>                            }}
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>                            {<span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>label</span>}
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+</span></span><span style=display:flex><span>                    );
+</span></span><span style=display:flex><span>                })}
+</span></span><span style=display:flex><span>                <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span>
+</span></span><span style=display:flex><span>                    <span style=color:#a6e22e>className</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;absolute bottom-0 left-0 h-1 bg-blue-500 transition-all duration-300&#34;</span>
+</span></span><span style=display:flex><span>                    <span style=color:#a6e22e>style</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>indicatorStyle</span>}
+</span></span><span style=display:flex><span>                <span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span> <span style=color:#a6e22e>className</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;p-4&#34;</span><span style=color:#f92672>&gt;</span>{<span style=color:#a6e22e>items</span>[<span style=color:#a6e22e>activeIndex</span>].<span style=color:#a6e22e>children</span>}<span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+</span></span><span style=display:flex><span>    );
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>Tabs</span>;
+</span></span></code></pre></div></div><footer class=post-footer><ul class=post-tags></ul><nav class=paginav><a class=next href=https://agcl.ink/posts/%E6%8A%95%E8%B5%84%E8%A7%82/><span class=title>Next »</span><br><span>投资观</span></a></nav></footer></article></main><footer class=footer></footer></body></html>
